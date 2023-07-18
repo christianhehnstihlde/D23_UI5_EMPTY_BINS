@@ -1,0 +1,41 @@
+specVersion: '2.0'
+metadata:
+  name: empty-bins
+type: application
+server:
+  customMiddleware:
+  - name: ui5-middleware-proxy-basicauth
+    afterMiddleware: compression
+    mountPath: /sap
+    configuration:
+      baseUri: "192.168.192.127:80/sap"
+      client: "200"
+      strictSSL: false
+  - name: ui5-middleware-livereload
+    afterMiddleware: compression
+    configuration:
+      debug: true
+      ext: "xml,json,properties,js"
+      port: 35729
+      path: "webapp"
+builder:
+  customTasks:
+  - name: ui5-task-nwabap-deployer
+    afterTask: generateVersionInfo
+    configuration: 
+      resources:
+        pattern: "**/*.*"
+      connection:
+        server: 192.168.192.127:80
+        client: '200'
+        useStrictSSL: false
+      ui5:
+        language: DE
+        package: $TMP
+        bspContainer: Zempty_bins
+        bspContainerText: empty-bins
+        transportUseLocked: true
+        createTransport: true
+        transportUseUserMatch: true
+        transportText: UI5 Deploy
+        

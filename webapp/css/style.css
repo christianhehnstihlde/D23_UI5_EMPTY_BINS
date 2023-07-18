@@ -1,0 +1,22 @@
+.HeightClass {
+    font-weight: bold !important;
+    font-size: 3em !important;
+    height: 10vh !important;
+}
+
+.BinCount {
+    font-weight: bold !important;
+    font-size: 3em !important;
+    height: 10vh !important;
+}
+
+.ColumnCaption {
+    font-weight: bold !important;
+    font-size: 50px !important;
+}
+
+.CurrentTime {
+    font-weight: bold !important;
+    font-size: 40px !important;
+
+}

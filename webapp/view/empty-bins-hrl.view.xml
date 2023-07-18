@@ -1,0 +1,50 @@
+<mvc:View controllerName="d2-empty-bins.empty-bins.controller.empty-bins-hrl"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+			<customHeader>
+				<Bar>
+					<contentMiddle>
+						<Text id="currentTime" textAlign="Left" class="CurrentTime"> </Text>
+					</contentMiddle>
+				</Bar>
+			</customHeader>
+			<content>
+				<Table id="EmptyBinTable"
+					items="{
+					path: 'emptyBins>/emptyBinSet',
+					filters: [
+					{ path: 'Lgnum', operator: 'EQ', value1: 'D20' },
+					{ path: 'Lgtyp', operator: 'EQ', value1: '2010' }
+					]
+				}">
+				<columns>
+					<Column>
+						<Text text="{i18n>columnDesc}"
+							class="ColumnCaption"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnCount}"
+							class="ColumnCaption"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{path: 'emptyBins>Lptyp', formatter: '.getTextForLptyp'}"
+								class="HeightClass"/>
+							<Text text="{emptyBins>EmptyBins}"
+								class="BinCount"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				</Table>
+			</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
